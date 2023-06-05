@@ -1,0 +1,26 @@
+#myColor{
+  background: deepskyblue;
+  margin:10px;
+  border: white;
+  box-shadow: 5px 4px 5px;
+}
+#history{
+  margin:10px;
+  border: white;
+  box-shadow: 5px 4px 5px;
+}
+#myColor:checked + input{
+  background: darkorange;
+}
+p{
+  color: white;
+  text-align: center;
+}
+h1{
+  text-align: center;
+  color: white;
+}
+h3{
+  color: white;
+  text-align: center;
+}

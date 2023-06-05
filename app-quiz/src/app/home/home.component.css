@@ -1,0 +1,14 @@
+h1{
+  color: white;
+}
+#myCss {
+  background-image: url("https://t4.ftcdn.net/jpg/03/45/88/07/360_F_345880772_zIT2mkdCzTthplO7xqaGGrMspN0jw0ll.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+
+}
+button{
+  color: white;
+}
