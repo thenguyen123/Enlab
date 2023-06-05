@@ -4,6 +4,7 @@ import {Quiz} from '../model/quiz';
 import Swal from 'sweetalert2';
 import * as moment from 'moment';
 import {QuizResult} from '../model/quiz-result';
+import {Router, RouterLink} from '@angular/router';
 
 
 @Component({
@@ -32,7 +33,7 @@ export class QuizComponent implements OnInit {
   answerResult: string;
   checkDisplay: boolean;
 
-  constructor(private quizService: QuizService) {
+  constructor(private quizService: QuizService, private route: Router) {
   }
 
   ngOnInit(): void {
@@ -105,40 +106,45 @@ export class QuizComponent implements OnInit {
         icon: 'success',
         title: 'Congratulations on completing the questions.Completion time is ' + this.display +
           '. The number of correct answers is ' + this.count + '/' + this.totalQuestion,
-        showCancelButton: true,
+        showDenyButton: true,
         confirmButtonText: 'Review',
+        denyButtonText: `Close`,
       }).then((result) => {
         if (result.isConfirmed) {
           this.checkDisplay = true;
           this.displayAnswer();
-        }
+        } else if (result.isDenied) {
+        this.route.navigateByUrl('/');
+      }
       });
     } else {
       Swal.fire({
         icon: 'error',
         title: 'Sorry you did not pass the test.Completion time is ' + this.display +
           '. The number of correct answers is' + this.count + '/' + this.totalQuestion,
-        showCancelButton: true,
+        showDenyButton: true,
         confirmButtonText: 'Review',
+        denyButtonText: `Close`,
       }).then((result) => {
         if (result.isConfirmed) {
           this.checkDisplay = true;
           this.displayAnswer();
+        } else if (result.isDenied) {
+          this.route.navigateByUrl('/');
         }
       });
     }
   }
 
   displayAnswer() {
-    // tslint:disable-next-line:prefer-for-of
     this.resultListQuiz = [];
     for (let j = 0; j < this.listQuiz.length; j++) {
       this.answerResult = this.mapQuiz.get(this.listQuiz[j].question);
 
       this.resultQuiz = {
-          quiz: this.listQuiz[j],
-          chooseAnswer: this.answerResult
-        };
+        quiz: this.listQuiz[j],
+        chooseAnswer: this.answerResult
+      };
       console.log(this.resultQuiz);
       this.resultListQuiz.push(this.resultQuiz);
     }

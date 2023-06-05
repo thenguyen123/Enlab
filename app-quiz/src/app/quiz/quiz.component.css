@@ -27,3 +27,6 @@ h3{
 .answer:focus{
   background-color: yellow;
 }
+button{
+  color: white;
+}
