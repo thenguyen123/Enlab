@@ -1,4 +1,4 @@
-#myColor{
+.myColor{
   background: deepskyblue;
   margin:10px;
   border: white;
@@ -8,9 +8,6 @@
   margin:10px;
   border: white;
   box-shadow: 5px 4px 5px;
-}
-#myColor:checked + input{
-  background: darkorange;
 }
 p{
   color: white;
@@ -23,4 +20,10 @@ h1{
 h3{
   color: white;
   text-align: center;
+}
+.answer{
+  background: deepskyblue;
+}
+.answer:focus{
+  background-color: yellow;
 }

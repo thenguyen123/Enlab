@@ -4,13 +4,9 @@
     <div class="row">
       <h3 style="text-align: center">{{quiz?.question}}</h3>
     </div>
-    <div class="row rounded-pill shadow-lg p-2  mb-3  rounded " *ngFor="let a of listAnswer"
-         id="myColor">
-      <div class="col-sm-3 col-md-3">
-        <input  type="radio" name="answer" id="answer" (change)="choose(a, quiz.question)">
-      </div>
-      <div class="col-sm-7 col-md-7">
-        <p for="answer">{{a}}</p>
+    <div class="row rounded-pill shadow-lg p-2  mb-3  rounded myColor" *ngFor="let a of listAnswer">
+      <div class="col-sm-11 col-md-11">
+        <button class="rounded-pill shadow-lg rounded answer w-100" (click)="choose(a, quiz.question)">{{a}}</button>
       </div>
       <div class="col-sm-1 col-md-1">
         <i *ngIf="answer===a&&check" class="fa-solid fa-check fa-2xl" style="color: #21e825;"></i>
@@ -18,26 +14,27 @@
       </div>
     </div>
     <div class="row  d-flex justify-content-center">
-    <button class="rounded-pill btn w-25" style="background-color: deepskyblue; " (click)="checkAnswer(quiz)">Next</button>
+      <button class="rounded-pill btn w-25" style="background-color: deepskyblue; " (click)="checkAnswer(quiz)">Next
+      </button>
     </div>
   </div>
 </div>
 <div>
   <div *ngIf="checkDisplay" class="d-flex justify-content-center">
-  <div  class="card " style="width: 60rem;background-color: blue">
-    <h1>Review Questions</h1>
-    <br>
-    <div class="row " *ngFor="let q of resultListQuiz">
-      <h3>{{q?.quiz.question}}</h3>
-      <div class="row "   *ngFor="let a of q.quiz.incorrect_answers">
-        <div  class="col-sm-11 col-md-11 rounded-pill shadow-lg p-2  mb-3 rounded" id="history"  [style.background-color]="a==q.chooseAnswer?a==q.quiz.correct_answer?'green':'#ff3333':a==q.quiz.correct_answer?'green':'deepskyblue'">
-          <p>{{a}}</p>
-        </div>
-      </div>
+    <div class="card " style="width: 60rem;background-color: blue">
+      <h1>Review Questions</h1>
       <br>
-
+      <div class="row " *ngFor="let q of resultListQuiz">
+        <h3>{{q?.quiz.question}}</h3>
+        <div class="row " *ngFor="let a of q.quiz.incorrect_answers">
+          <div class="col-sm-11 col-md-11 rounded-pill shadow-lg p-2  mb-3 rounded" id="history"
+               [style.background-color]="a==q.chooseAnswer?a==q.quiz.correct_answer?'green':'#ff3333':a==q.quiz.correct_answer?'green':'deepskyblue'">
+            <p>{{a}}</p>
+          </div>
+        </div>
+        <br>
+      </div>
     </div>
   </div>
-</div>
   <button class="rounded-pill btn w-25">Back</button>
 </div>
